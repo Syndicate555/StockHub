@@ -3,5 +3,21 @@ const UserSchema = new mongoose.Schema({
  googleId: {
   type: String,
   required: true
+ },
+ googleId: {
+  type: String,
+  required: true
+ },
+ googleId: {
+  type: String,
+  required: true
+ },
+googleId: {
+  type: String,
+  required: true
+ },
+ googleId: {
+  type: String,
+  required: true
  }
 })
