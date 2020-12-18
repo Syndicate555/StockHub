@@ -4,9 +4,13 @@ const dotenv = require('dotenv')
 const connectDB = require('./config/db') // connecting the MongoDB database
 const morgan = require('morgan') // for log in
 const exphbs = require('express-handlebars')
+const passport = require('passport')
 //load config 
 dotenv.config({path: './config/config.env'})
 
+
+// passport config
+require('./config/passport')(passport)
 connectDB()
 const app = express()
 
@@ -20,6 +24,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 //handlebars
 app.engine('.hbs', exphbs({defaultLayout: 'main',extname:'hbs'}))
 app.set('view engine', '.hbs')
+
+//passport middleware 
+app.use(passport.initialize())
+app.use(passport.session())
 
 //routes
 app.use('/', require('./routes/index'))
