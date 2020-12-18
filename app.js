@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // static folder
-app.use(express.static())
+app.use(express.static(path.join(__dirnamem, 'public')))
 
 //handlebars
 app.engine('.hbs', exphbs({defaultLayout: 'main',extname:'hbs'}))
