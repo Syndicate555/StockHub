@@ -26,6 +26,15 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.engine('.hbs', exphbs({defaultLayout: 'main',extname:'hbs'}))
 app.set('view engine', '.hbs')
 
+
+// sessions
+
+app.use(session({
+ secret: 'keyboard cat',
+ resave: false,
+ saveUninitialized: true,
+ cookie:{secure: true}
+}))
 //passport middleware 
 app.use(passport.initialize())
 app.use(passport.session())
