@@ -2,6 +2,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 const connectDB = require('./config/db') // connecting the MongoDB database
 const morgan = require('morgan') // for log in
+const exphbs = require('express-handlebars')
 //load config 
 dotenv.config({path: './config/config.env'})
 
