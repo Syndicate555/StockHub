@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'development') {
 app.engine('.hbs', exphbs({defaultLayout: 'main',extname:'hbs'}))
 app.set('view engine', '.hbs')
 
-//routers
+//routes
 app.use('/', require('./routes/index'))
 
 
