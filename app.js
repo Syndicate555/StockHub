@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 const dotenv = require('dotenv')
 const connectDB = require('./config/db') // connecting the MongoDB database
 const morgan = require('morgan') // for log in
@@ -13,6 +14,8 @@ if (process.env.NODE_ENV === 'development') {
  app.use(morgan('dev'))
 }
 
+// static folder
+app.use(express.static())
 
 //handlebars
 app.engine('.hbs', exphbs({defaultLayout: 'main',extname:'hbs'}))
