@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 })
 
 
-router.get('/', (req, res) => {
+router.get('/dashboard', (req, res) => {
  res.send('Dashboard')
 })
 
