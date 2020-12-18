@@ -4,15 +4,15 @@ const UserSchema = new mongoose.Schema({
   type: String,
   required: true
  },
- googleId: {
+ displayName: {
   type: String,
   required: true
  },
- googleId: {
+ firstName: {
   type: String,
   required: true
  },
-googleId: {
+lastName: {
   type: String,
   required: true
  },
