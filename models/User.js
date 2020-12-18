@@ -16,8 +16,8 @@ lastName: {
   type: String,
   required: true
  },
- googleId: {
+ image: {
   type: String,
-  required: true
+  
  }
 })
