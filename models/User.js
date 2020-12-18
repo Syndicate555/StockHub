@@ -18,6 +18,9 @@ lastName: {
  },
  image: {
   type: String,
-  
+ },
+ createdAt: {
+  type: Date,
+  default:Date.now
  }
 })
