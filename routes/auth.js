@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 
-// GET request Login/Landing Page
+// GET request Authenticate with google
 router.get('/', (req, res) => {
  res.render('login', {
   layout:'login'
