@@ -1,7 +1,6 @@
-// Code for authenticating and loggin in with google
+// Code for authenticating and logging in with google
 
 const express = require('express')
-const router = express.Router()
 const router = express.Router()
 
 
