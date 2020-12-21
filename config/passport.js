@@ -9,7 +9,14 @@ module.exports = function (passport) {
    callbackURL: '/auth/google/callback'
     
  }, async (accessToken, refreshToken, profile, done) => {
-   console.log(profile)
+     // Populating the user Schema with the data from the google API
+     const newUser = {
+       googleId: profile.id,
+       displayName: profile.displayName,
+       firstName: profile.name.givenName,
+       lastName: profile.name.familyName,
+       image: profile.photos[0].value,
+   }
  }))
  passport.serializeUser((user, done) => {
     done(null, user.id)
