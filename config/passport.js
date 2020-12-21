@@ -16,7 +16,17 @@ module.exports = function (passport) {
        firstName: profile.name.givenName,
        lastName: profile.name.familyName,
        image: profile.photos[0].value,
-   }
+     }
+     
+     try {
+       let user = await User.findOne({ googleId: profile.id })
+       if (user) {
+         done(null, user)
+       }
+       
+     } catch (error) {
+       
+     }
  }))
  passport.serializeUser((user, done) => {
     done(null, user.id)
