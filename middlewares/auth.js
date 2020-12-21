@@ -1,3 +1,4 @@
+// Middleware to restrict access without login credentials
 module.exports = {
  ensureAuth: function (req, res, next) {
   if (req.isAuthenticated()) {
