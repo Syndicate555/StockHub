@@ -34,6 +34,7 @@ app.use(session({
  secret: 'keyboard cat',
  resave: false,
  saveUninitialized: false,
+ store: new MongoStore({mongooseConnection: mongoose.connection})
  
 }))
 //passport middleware 
