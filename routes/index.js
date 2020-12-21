@@ -11,7 +11,7 @@ router.get('/', ensureGuest, (req, res) => { // middleware applied
 })
 
 
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', ensureAuth, (req, res) => {
  res.render('dashboard')
 })
 
