@@ -7,6 +7,7 @@ const exphbs = require('express-handlebars')
 const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
+const mongoose = require('mongoose')
 //load config 
 dotenv.config({path: './config/config.env'})
 
