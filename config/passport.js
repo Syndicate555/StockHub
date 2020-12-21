@@ -23,11 +23,12 @@ module.exports = function (passport) {
        if (user) {
          done(null, user)
        } else {
-         user = await User.create(newUser)
+         user = await User.create(newUser) // creates a new user using the schema
          done(null, user)
        }
        
      } catch (error) {
+       console.error(error)
        
      }
  }))
