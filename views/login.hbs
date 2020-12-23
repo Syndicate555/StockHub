@@ -35,6 +35,11 @@
  </a>
 </div> --}}
 {{!-- <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div> --}}
+
+<fb:login-button
+    scope = "public_profile,email"
+    onlogin = "checkLoginState();">
+</fb:login-button>
 <div class="section">
     <a href="" class="btn blue darken-1">
   <i class="fab fa-google left"></i> Log In With Twitter
