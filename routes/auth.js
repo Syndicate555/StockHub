@@ -1,5 +1,4 @@
 // Code for authenticating and logging in with google
-
 const express = require('express')
 const router = express.Router()
 const passport = require('passport')
