@@ -1,4 +1,4 @@
-// Database schema for user storie
+// Database schema for user stories
 const mongoose = require('mongoose')
 const StorySchema = new mongoose.Schema({
  title: {
