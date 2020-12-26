@@ -45,6 +45,7 @@ app.use(passport.session())
 //routes
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
+app.use('/stories/add', require('./routes/stories'))
 
 
 const PORT = process.env.PORT || 4545
