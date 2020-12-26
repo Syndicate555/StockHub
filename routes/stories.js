@@ -6,9 +6,7 @@ const Story  = require('../models/Story')
 // @desc  Show add page
 // @route GET /stories/add
 router.get('/', ensureGuest, (req, res) => { // middleware applied
- res.render('login', {
-  layout:'login'
- })
+ res.render('stories/add')
 })
 
 
