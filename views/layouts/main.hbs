@@ -62,7 +62,11 @@
  <script>
   M.Sidenav.init(document.querySelector('.sidenav'))
   M.FormSelect.init(document.querySelector('#status'))
+    CKEDITOR.plugins.addExternal('timestamp', 'https://ckeditor.com/docs/ckeditor4/4.15.1/examples/assets/plugins/timestamp/', 'plugin.js');
 
+    CKEDITOR.replace('body', {
+      extraPlugins: 'timestamp'
+    });
   
   
   CKEDITOR.replace('body', {
