@@ -13,6 +13,12 @@ router.get('/', ensureGuest, (req, res) => { // middleware applied
 // @desc Dashboard
 // @route GET /dashboard
 router.get('/dashboard', ensureAuth, (req, res) => {
+    try {
+        const stories = await Story.find({user: req.user.id}).lean()
+        
+    } catch (error) {
+        
+    }
  res.render('dashboard', {
      name:req.user.firstName
  })
