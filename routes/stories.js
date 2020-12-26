@@ -5,7 +5,7 @@ const Story  = require('../models/Story')
 
 // @desc  Show add page
 // @route GET /stories/add
-router.get('/', ensureGuest, (req, res) => { // middleware applied
+router.get('/add', ensureAuth, (req, res) => { 
  res.render('stories/add')
 })
 
