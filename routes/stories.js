@@ -9,10 +9,15 @@ router.get('/add', ensureAuth, (req, res) => {
  res.render('stories/add')
 })
 
-// @desc  Show add page
-// @route GET /stories/add
-router.get('/add', ensureAuth, (req, res) => { 
-    res.render('stories/add')
+// @desc  Process add form
+// @route POST /stories/add
+router.post('/', ensureAuth, (req, res) => { 
+    try {
+    
+} catch (error) {
+    console.error(err)
+    res.render('error/500')
+}
    })
    
 
