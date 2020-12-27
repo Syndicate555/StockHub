@@ -52,5 +52,5 @@ app.use('/auth', require('./routes/auth'))
 app.use('/stories', require('./routes/stories'))
 
 
-const PORT = process.env.PORT || 4545
+const PORT = process.env.PORT || 3000
 app.listen(PORT, console.log(`Surver running in ${process.env.NODE_ENV} mode on port ${PORT}`))
