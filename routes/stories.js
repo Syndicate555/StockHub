@@ -17,7 +17,7 @@ router.post('/', ensureAuth, async (req, res) => {
     await Story.create(req.body)
     res.redirect('/dashboard')
 } catch (error) {
-    console.error(err)
+    console.error(error)
     res.render('error/500')
 }
    })
