@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const {ensureAuth, ensureGuest} = require('../middlewares/auth') // destructuring
 const Story  = require('../models/Story')
+var handlebars = require('handlebars');
+var hbtdate = require('handlebars-helper-formatdate')(handlebars);
 
 // GET request Login/Landing Page
 router.get('/', ensureGuest, (req, res) => { // middleware applied
