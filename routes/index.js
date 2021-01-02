@@ -12,8 +12,10 @@ router.get('/', ensureGuest, (req, res) => { // middleware applied
  })
 })
 
-router.get('/register', ensureGuest, (req, res) => { 
-    res.render('register')
+router.get('/register', ensureGuest, (req, res) => { // middleware applied
+    res.render('register', {
+     layout:'register'
+    })
    })
 // @desc Dashboard
 // @route GET /dashboard
