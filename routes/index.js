@@ -3,6 +3,7 @@ const router = express.Router()
 const {ensureAuth, ensureGuest} = require('../middlewares/auth') // destructuring
 const Story  = require('../models/Story')
 var handlebars = require('handlebars');
+var popup = require('popups')
 var hbtdate = require('handlebars-helper-formatdate')(handlebars);
 const Register = require("../models/Registers")
 // GET request Login/Landing Page
@@ -35,7 +36,10 @@ router.post('/register', ensureGuest, async (req, res) => {
             res.redirect('/')
 
         }else{
-            res.send("passwords are not matching")
+            popup.alert({
+                content:"Passwords are not matching"
+            })
+            // res.send("passwords are not matching")
         }
     } catch (error) {
         // res.status(400).send(error)
