@@ -22,7 +22,7 @@ router.get('/register', ensureGuest, (req, res) => { // middleware applied
 router.post('/register', ensureGuest, async (req, res) => { 
     try {
         const password = req.body.password;
-        const cpassword = req.body.password;
+        const cpassword = req.body.confirmpassword;
         
     } catch (error) {
         res.status(400).send(error)
