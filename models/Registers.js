@@ -19,4 +19,4 @@ lastName: {
  }
 })
 
-module.exports = mongoose.model('User', UserSchema)
+module.exports = mongoose.model('Register', RegisterSchema)
