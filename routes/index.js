@@ -4,7 +4,7 @@ const {ensureAuth, ensureGuest} = require('../middlewares/auth') // destructurin
 const Story  = require('../models/Story')
 var handlebars = require('handlebars');
 var hbtdate = require('handlebars-helper-formatdate')(handlebars);
-
+const Register = require("../models/Registers")
 // GET request Login/Landing Page
 router.get('/', ensureGuest, (req, res) => { // middleware applied
  res.render('login', {
