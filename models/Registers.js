@@ -25,4 +25,6 @@ lastName: {
  }
 })
 
-module.exports = mongoose.model('Register', RegisterSchema)
+const Register = mongoose.model('Register', RegisterSchema)
+
+module.exports = Register;
