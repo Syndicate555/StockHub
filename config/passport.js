@@ -21,6 +21,7 @@ module.exports = function (passport) {
      try {
        let user = await User.findOne({ googleId: profile.id })
        if (user) {
+        //  console.log(profile)
          done(null, user)
        } else {
          user = await User.create(newUser) // creates a new user using the schema
