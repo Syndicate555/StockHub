@@ -19,7 +19,7 @@ router.get('/register', ensureGuest, (req, res) => { // middleware applied
    })
 
 // create a new registered user
-router.post('/register', ensureGuest, (req, res) => { // middleware applied
+router.post('/register', ensureGuest, async (req, res) => { // middleware applied
     
    })
 
