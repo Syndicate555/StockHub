@@ -24,6 +24,13 @@ router.post('/register', ensureGuest, async (req, res) => {
         const password = req.body.password;
         const cpassword = req.body.confirmpassword;
         if (password === cpassword){
+            const registerUser = new Register({
+                firstName : req.body.firstname,
+                lastName: req.body.lastname,
+                email : req.body.email,
+                password : password,
+                confirmpassword : cpassword
+            })
 
         }else{
             res.send("passwords are not matching")
