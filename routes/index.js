@@ -26,7 +26,7 @@ router.post('/register', ensureGuest, async (req, res) => {
         if (password === cpassword){
 
         }else{
-            window.alert("Passwords are not matching")
+            res.send("passwords are not matching")
         }
     } catch (error) {
         // res.status(400).send(error)
