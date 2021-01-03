@@ -17,6 +17,13 @@ router.get('/register', ensureGuest, (req, res) => { // middleware applied
      layout:'register'
     })
    })
+
+// create a new registered user
+router.post('/register', ensureGuest, (req, res) => { // middleware applied
+    
+   })
+
+
 // @desc Dashboard
 // @route GET /dashboard
 router.get('/dashboard', ensureAuth, async (req, res) => {
