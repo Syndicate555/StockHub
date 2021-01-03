@@ -23,13 +23,14 @@ router.post('/register', ensureGuest, async (req, res) => {
     try {
         const password = req.body.password;
         const cpassword = req.body.confirmpassword;
-        if (password ===cpassword){
+        if (password === cpassword){
 
         }else{
-            res.send("passwords are not matching")
+            window.alert("Passwords are not matching")
         }
     } catch (error) {
-        res.status(400).send(error)
+        // res.status(400).send(error)
+        console.error(error)
         
     }
     
