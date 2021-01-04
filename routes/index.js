@@ -15,8 +15,13 @@ router.get('/login', ensureGuest, (req, res) => { // middleware applied
  })
 })
 
-router.post('/login', ensureGuest, (req, res) => { // middleware applied
-   
+router.post('/login', ensureGuest, async (req, res) => { // middleware applied
+   try {
+       
+   } catch (error) {
+       console.error(error)
+       
+   }
    })
 
 router.get('/register', ensureGuest, (req, res) => { // middleware applied
