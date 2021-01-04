@@ -9,11 +9,17 @@ let alert = require('alert');
 var hbtdate = require('handlebars-helper-formatdate')(handlebars);
 const Register = require("../models/Registers")
 // GET request Login/Landing Page
-router.get('/', ensureGuest, (req, res) => { // middleware applied
+router.get('/login', ensureGuest, (req, res) => { // middleware applied
  res.render('login', {
   layout:'login'
  })
 })
+
+router.get('/login', ensureGuest, (req, res) => { // middleware applied
+    res.render('login', {
+     layout:'login'
+    })
+   })
 
 router.get('/register', ensureGuest, (req, res) => { // middleware applied
     res.render('register', {
