@@ -28,10 +28,8 @@ router.post('/login', ensureGuest, async (req, res) => { // middleware applied
        const email = req.body.email;
        const password = req.body.password;
        const useremail = await Register.findOne({email:email})
-       console.log(useremail)
-       console.log(password)
        if (useremail.password === password){
-           res.status(201).render("dashboard")
+        //    res.status(201).render("dashboard")
        } else{
            alert("invalid password")
        }
