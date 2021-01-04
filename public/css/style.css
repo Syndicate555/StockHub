@@ -20,7 +20,9 @@ p {
 .img-small {
   width: 180px;
 }
-
+#signin {
+  text-align: center;
+}
 body {
   margin: 0;
   padding: 0;
