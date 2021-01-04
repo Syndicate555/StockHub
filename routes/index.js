@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const {ensureAuth, ensureGuest} = require('../middlewares/auth') // destructuring
 const Story  = require('../models/Story')
+const passport = require('passport')
+
 var handlebars = require('handlebars');
 let alert = require('alert');  
 
