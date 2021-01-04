@@ -31,7 +31,7 @@ router.post('/login',  async (req, res) => { // middleware applied
        console.log(useremail)
        console.log(password)
        if (useremail.password === password){
-           res.redirect('/dashboard')
+           res.status(201).render(index)
        } else{
            alert("invalid password")
        }
