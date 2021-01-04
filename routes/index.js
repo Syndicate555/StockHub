@@ -19,7 +19,7 @@ router.post('/login', ensureGuest, async (req, res) => { // middleware applied
    try {
        const email = req.body.email;
        const password = req.body.password;
-       Register.findOne({email:email})
+       await Register.findOne({email:email})
    } catch (error) {
        console.error(error)
        
