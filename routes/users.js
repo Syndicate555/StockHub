@@ -9,3 +9,9 @@ router.get('/', ensureGuest, (req, res) => { // middleware applied
      layout:'login'
     })
    })
+
+router.get('/register', ensureGuest, (req, res) => { // middleware applied
+    res.render('register', {
+     layout:'register'
+    })
+})

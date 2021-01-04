@@ -10,11 +10,7 @@ let alert = require('alert');
 var hbtdate = require('handlebars-helper-formatdate')(handlebars);
 const Register = require("../models/Registers")
 // GET request Login/Landing Page
-router.get('/', ensureGuest, (req, res) => { // middleware applied
- res.render('login', {
-  layout:'login'
- })
-})
+
 
 // router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
 //     res.redirect('/dashboard')
@@ -28,7 +24,8 @@ router.post('/', ensureGuest, async (req, res) => { // middleware applied
        const password = req.body.password;
        const useremail = await Register.findOne({email:email})
        if (useremail.password === password){
-        //    res.status(201).render("dashboard")
+           res.render("dashboard")
+        // res.redirect('/dashboard')
        } else{
            alert("invalid password")
        }
@@ -36,12 +33,6 @@ router.post('/', ensureGuest, async (req, res) => { // middleware applied
        console.error(error)
        alert("Invalid email")
    }
-   })
-
-router.get('/register', ensureGuest, (req, res) => { // middleware applied
-    res.render('register', {
-     layout:'register'
-    })
    })
 
 // create a new registered user
