@@ -15,11 +15,19 @@ router.get('/login', ensureGuest, (req, res) => { // middleware applied
  })
 })
 
-router.post('/login', ensureGuest, async (req, res) => { // middleware applied
+router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
+    res.redirect('/dashboard')
+   })
+   
+
+
+router.post('/login', passport.authenticate('google', { failureRedirect: '/login' }),  async (req, res) => { // middleware applied
    try {
        const email = req.body.email;
        const password = req.body.password;
        const useremail = await Register.findOne({email:email})
+       console.log(useremail)
+       console.log(password)
        if (useremail.password === password){
            res.redirect('/dashboard')
        } else{
