@@ -9,7 +9,7 @@ router.get('/google', passport.authenticate('google', { scope:['profile']}))
 
 // Google auth callback 
 // GET request
-router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
+router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
  res.redirect('/dashboard')
 })
 
