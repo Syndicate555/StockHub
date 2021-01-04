@@ -22,7 +22,7 @@ router.get('/login', ensureGuest, (req, res) => { // middleware applied
 //    })
    
 
-
+//checking the database for the login credentials
 router.post('/login', ensureGuest, async (req, res) => { // middleware applied
    try {
        const email = req.body.email;
