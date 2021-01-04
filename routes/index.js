@@ -12,6 +12,21 @@ const Register = require("../models/Registers")
 // GET request Login/Landing Page
 
 
+// Login Page
+router.get('/', ensureGuest, (req, res) => { // middleware applied
+    res.render('login', {
+     layout:'login'
+    })
+   })
+
+router.get('/register', ensureGuest, (req, res) => { // middleware applied
+    res.render('register', {
+     layout:'register'
+    })
+})
+
+
+
 // router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
 //     res.redirect('/dashboard')
 //    })
