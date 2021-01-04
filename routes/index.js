@@ -23,7 +23,7 @@ router.get('/login', ensureGuest, (req, res) => { // middleware applied
    
 
 
-router.post('/login',  async (req, res) => { // middleware applied
+router.post('/login', ensureGuest, async (req, res) => { // middleware applied
    try {
        const email = req.body.email;
        const password = req.body.password;
