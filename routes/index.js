@@ -3,7 +3,6 @@ const router = express.Router()
 const {ensureAuth, ensureGuest} = require('../middlewares/auth') // destructuring
 const Story  = require('../models/Story')
 const passport = require('passport')
-
 var handlebars = require('handlebars');
 let alert = require('alert');  
 
@@ -11,7 +10,7 @@ let alert = require('alert');
 var hbtdate = require('handlebars-helper-formatdate')(handlebars);
 const Register = require("../models/Registers")
 // GET request Login/Landing Page
-router.get('/login', ensureGuest, (req, res) => { // middleware applied
+router.get('/', ensureGuest, (req, res) => { // middleware applied
  res.render('login', {
   layout:'login'
  })
@@ -23,7 +22,7 @@ router.get('/login', ensureGuest, (req, res) => { // middleware applied
    
 
 //checking the database for the login credentials
-router.post('/login', ensureGuest, async (req, res) => { // middleware applied
+router.post('/', ensureGuest, async (req, res) => { // middleware applied
    try {
        const email = req.body.email;
        const password = req.body.password;
@@ -59,7 +58,7 @@ router.post('/register', ensureGuest, async (req, res) => {
                 confirmpassword : cpassword
             })
             const registered = await registerUser.save();
-            res.redirect('/login')
+            res.redirect('/')
 
         }else{
             alert("Passwords are not matching")
