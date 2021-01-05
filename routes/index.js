@@ -26,6 +26,22 @@ router.get('/register', ensureGuest, (req, res) => { // middleware applied
 })
 
 
+router.get('/',  async (req, res) => { // middleware applied
+    try {
+        const email = req.body.email;
+        const password = req.body.password;
+        const useremail = await Register.findOne({email:email})
+        if (useremail.password === password){
+            res.redirect('/dashboard')
+         // res.redirect('/dashboard')
+        } else{
+            alert("invalid password")
+        }
+    } catch (error) {
+        console.error(error)
+        alert("Invalid email")
+    }
+    })
 
 
    
