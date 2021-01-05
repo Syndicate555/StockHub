@@ -44,7 +44,8 @@ router.post('/register', ensureGuest,  (req, res) => {
             Register.findOne({email:email}).then(user => {
                 if (user){
                     //User exists
-                    res.render('register')
+                    alert('User already exists')
+                    res.redirect('/register')
                 }
                 else{
                     const registerUser = new Register({
