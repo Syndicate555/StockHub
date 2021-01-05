@@ -7,6 +7,9 @@ const handlebars = require('handlebars');
 const alert = require('alert');  
 const Register = require("../models/Registers")
 const hbtdate = require('handlebars-helper-formatdate')(handlebars);
+
+
+
 // GET request Login/Landing Page
 
 
@@ -25,9 +28,7 @@ router.get('/register', ensureGuest, (req, res) => { // middleware applied
 
 
 
-// router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-//     res.redirect('/dashboard')
-//    })
+
    
 
 //checking the database for the login credentials
