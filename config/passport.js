@@ -69,7 +69,3 @@ module.exports = function(passport) {
   })
 }
 
-module.exports = {
-  myfunction,
-  myfunction1
-}
