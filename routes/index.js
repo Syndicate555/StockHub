@@ -44,7 +44,7 @@ router.post('/register', ensureGuest, async (req, res) => {
             const registerUser = new Register({
                 firstName : req.body.firstname,
                 lastName: req.body.lastname,
-                email : req.body.email,
+                email : email,
                 password : password,
                 confirmpassword : cpassword
             })
@@ -52,10 +52,7 @@ router.post('/register', ensureGuest, async (req, res) => {
             res.redirect('/')
 
         }else{
-            alert("Passwords are not matching")
-            // popup.alert({
-            //     content:"Passwords are not matching"
-            // })
+            
             // res.send("passwords are not matching")
         }
     } catch (error) {
