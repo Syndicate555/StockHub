@@ -7,7 +7,6 @@ const handlebars = require('handlebars');
 const alert = require('alert');  
 const Register = require("../models/Registers")
 
-// var popup = require('popups')
 var hbtdate = require('handlebars-helper-formatdate')(handlebars);
 // GET request Login/Landing Page
 
