@@ -10,6 +10,13 @@ function myfunction(passport){
     new LocalStrategy({
       usernameField: 'email'
     }, (email, password, done) => {
+      // Match User
+      User.findOne({ email: email}).then(user => {
+        if (!user) {
+          return done()
+
+        }
+      }).catch( err => console.log(err))
 
     })
   )
