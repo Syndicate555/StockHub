@@ -14,6 +14,7 @@ var {myfunction, myfunction1}= require('./config/passport')
 dotenv.config({path: './config/config.env'})
 
 myfunction1(passport)
+myfunction(passport)
 
 // passport config
 

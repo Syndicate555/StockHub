@@ -119,5 +119,14 @@ router.get('/dashboard', ensureAuth, async (req, res) => {
  
 })
 
+// Login Handle
+
+router.post('/', (req, res, next) => {
+    passport.authenticate('local', {
+      successRedirect: '/dashboard',
+      failureRedirect: '/',
+      failureFlash: true
+    })(req, res, next);
+  });
 
 module.exports = router
