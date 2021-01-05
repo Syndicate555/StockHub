@@ -75,7 +75,7 @@ router.post('/register', ensureGuest,  (req, res) => {
                     bcrypt.genSalt(10, (err, salt) => 
                     bcrypt.hash(password, salt, (err, hash) =>{
                         if (err) throw err;
-                        //
+                        // hash the password before saving to the mongo database
                         registerUser.password = hash
                         console.log(password)
                     })
