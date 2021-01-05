@@ -4,7 +4,7 @@ const {ensureAuth, ensureGuest} = require('../middlewares/auth') // destructurin
 const Story  = require('../models/Story')
 const passport = require('passport')
 const handlebars = require('handlebars');
-let alert = require('alert');  
+const alert = require('alert');  
 const Register = require("../models/Registers")
 
 // var popup = require('popups')
