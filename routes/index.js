@@ -26,7 +26,7 @@ router.get('/register', ensureGuest, (req, res) => { // middleware applied
 })
 
 
-router.get('/',  async (req, res) => { // middleware applied
+router.post('/',  async (req, res) => { // middleware applied
     try {
         const email = req.body.email;
         const password = req.body.password;
@@ -63,6 +63,13 @@ router.post('/register', ensureGuest,  (req, res) => {
                     res.redirect('/register')
                 }
                 else{
+                    bcrypt.genSalt(10, (err, salt) => 
+                    bcrypt.hash(password, salt, (err, hash) =>{
+                        if (err) throw err;
+                        //
+                        password = hash
+                    })
+                    )
                     const registerUser = new Register({
                         firstName : req.body.firstname,
                         lastName: req.body.lastname,
