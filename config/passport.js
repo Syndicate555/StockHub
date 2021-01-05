@@ -58,5 +58,5 @@ function myfunction1(passport) {
 
 module.exports = {
   myfunction,
-  my
+  myfunction1
 }
