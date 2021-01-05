@@ -13,8 +13,7 @@ function myfunction(passport){
       // Match User
       User.findOne({ email: email}).then(user => {
         if (!user) {
-          return done()
-
+          return done(null, false, {message: 'That email is not registered'})
         }
       }).catch( err => console.log(err))
 
