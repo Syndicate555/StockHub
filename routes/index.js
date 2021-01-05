@@ -41,6 +41,11 @@ router.post('/register', ensureGuest, async (req, res) => {
         const password = req.body.password;
         const cpassword = req.body.confirmpassword;
         if (password === cpassword){
+            Register.findOne({email:email}).then(user => {
+                if (user){
+                    
+                }
+            })
             const registerUser = new Register({
                 firstName : req.body.firstname,
                 lastName: req.body.lastname,
