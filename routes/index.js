@@ -35,7 +35,7 @@ router.get('/register', ensureGuest, (req, res) => { // middleware applied
 
 
 // create a new registered user
-router.post('/register', ensureGuest, async (req, res) => { 
+router.post('/register', ensureGuest,  (req, res) => { 
     try {
         const email = req.body.email;
         const password = req.body.password;
@@ -43,18 +43,23 @@ router.post('/register', ensureGuest, async (req, res) => {
         if (password === cpassword){
             Register.findOne({email:email}).then(user => {
                 if (user){
-                    
+                    //User exists
+                    res.render('register')
+                }
+                else{
+                    const registerUser = new Register({
+                        firstName : req.body.firstname,
+                        lastName: req.body.lastname,
+                        email : email,
+                        password : password,
+                        confirmpassword : cpassword
+                    })
+                    const registered =  registerUser.save();
+                    res.redirect('/')
+
                 }
             })
-            const registerUser = new Register({
-                firstName : req.body.firstname,
-                lastName: req.body.lastname,
-                email : email,
-                password : password,
-                confirmpassword : cpassword
-            })
-            const registered = await registerUser.save();
-            res.redirect('/')
+            
 
         }else{
             
