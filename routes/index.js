@@ -37,6 +37,7 @@ router.get('/register', ensureGuest, (req, res) => { // middleware applied
 // create a new registered user
 router.post('/register', ensureGuest, async (req, res) => { 
     try {
+        const email = req.body.email;
         const password = req.body.password;
         const cpassword = req.body.confirmpassword;
         if (password === cpassword){
