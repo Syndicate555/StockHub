@@ -6,8 +6,7 @@ const passport = require('passport')
 const handlebars = require('handlebars');
 const alert = require('alert');  
 const Register = require("../models/Registers")
-
-var hbtdate = require('handlebars-helper-formatdate')(handlebars);
+const hbtdate = require('handlebars-helper-formatdate')(handlebars);
 // GET request Login/Landing Page
 
 
