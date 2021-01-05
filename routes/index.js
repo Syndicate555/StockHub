@@ -53,8 +53,8 @@ router.post('/',  async (req, res) => { // middleware applied
 router.post('/register', ensureGuest,  (req, res) => { 
     try {
         const email = req.body.email;
-        const password = req.body.password;
-        const cpassword = req.body.confirmpassword;
+        let password = req.body.password;
+        let cpassword = req.body.confirmpassword;
         if (password === cpassword){
             Register.findOne({email:email}).then(user => {
                 if (user){
@@ -63,20 +63,24 @@ router.post('/register', ensureGuest,  (req, res) => {
                     res.redirect('/register')
                 }
                 else{
-                    bcrypt.genSalt(10, (err, salt) => 
-                    bcrypt.hash(password, salt, (err, hash) =>{
-                        if (err) throw err;
-                        //
-                        password = hash
-                    })
-                    )
+                    
                     const registerUser = new Register({
                         firstName : req.body.firstname,
                         lastName: req.body.lastname,
                         email : email,
-                        password : password,
-                        confirmpassword : cpassword
+                        password
+                        
                     })
+
+                    bcrypt.genSalt(10, (err, salt) => 
+                    bcrypt.hash(password, salt, (err, hash) =>{
+                        if (err) throw err;
+                        //
+                        registerUser.password = hash
+                        console.log(password)
+                    })
+                    )
+
                     const registered =  registerUser.save();
                     res.redirect('/')
 
