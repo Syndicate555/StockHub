@@ -8,7 +8,7 @@ const alert = require('alert');
 const Register = require("../models/Registers")
 const hbtdate = require('handlebars-helper-formatdate')(handlebars);
 const bcrypt = require('bcryptjs')
-
+const session = require('express-session')
 
 
 
