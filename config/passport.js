@@ -16,7 +16,7 @@ function myfunction(passport){
 }
 
 
-function myfunction(passport) {
+function myfunction1(passport) {
  passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -54,4 +54,9 @@ function myfunction(passport) {
   passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => done(err, user))
   })
+}
+
+module.exports = {
+  myfunction,
+  my
 }
