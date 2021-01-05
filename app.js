@@ -8,7 +8,7 @@ const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const mongoose = require('mongoose')
-var {myfunction, myfunction1}= require('./config/passport')
+require('./config/passport')(passport);
 
 //load config 
 dotenv.config({path: './config/config.env'})
