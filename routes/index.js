@@ -7,10 +7,9 @@ const handlebars = require('handlebars');
 const alert = require('alert');  
 const Register = require("../models/Registers")
 const hbtdate = require('handlebars-helper-formatdate')(handlebars);
+const bcrypt = require('bcryptjs')
 
 
-
-// GET request Login/Landing Page
 
 
 // Login Page
