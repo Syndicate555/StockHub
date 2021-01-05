@@ -29,7 +29,7 @@ const Register = require('../models/Registers') // for email login
 // }
 
 
-function myfunction1(passport) {
+function(passport) {
  passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
