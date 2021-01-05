@@ -3,12 +3,12 @@ const router = express.Router()
 const {ensureAuth, ensureGuest} = require('../middlewares/auth') // destructuring
 const Story  = require('../models/Story')
 const passport = require('passport')
-var handlebars = require('handlebars');
+const handlebars = require('handlebars');
 let alert = require('alert');  
+const Register = require("../models/Registers")
 
 // var popup = require('popups')
 var hbtdate = require('handlebars-helper-formatdate')(handlebars);
-const Register = require("../models/Registers")
 // GET request Login/Landing Page
 
 
@@ -33,22 +33,7 @@ router.get('/register', ensureGuest, (req, res) => { // middleware applied
    
 
 //checking the database for the login credentials
-router.post('/', ensureGuest, async (req, res) => { // middleware applied
-   try {
-       const email = req.body.email;
-       const password = req.body.password;
-       const useremail = await Register.findOne({email:email})
-       if (useremail.password === password){
-           res.render("dashboard")
-        // res.redirect('/dashboard')
-       } else{
-           alert("invalid password")
-       }
-   } catch (error) {
-       console.error(error)
-       alert("Invalid email")
-   }
-   })
+
 
 // create a new registered user
 router.post('/register', ensureGuest, async (req, res) => { 
