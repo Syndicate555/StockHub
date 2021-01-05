@@ -79,6 +79,7 @@ router.post('/register', ensureGuest,  (req, res) => {
                         registerUser.password = hash
                         console.log(password)
                         const registered =  registerUser.save();
+                        alert("Registration Successful")
                         res.redirect('/')
 
                     })
