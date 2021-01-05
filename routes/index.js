@@ -78,12 +78,13 @@ router.post('/register', ensureGuest,  (req, res) => {
                         // hash the password before saving to the mongo database
                         registerUser.password = hash
                         console.log(password)
+                        const registered =  registerUser.save();
+                        res.redirect('/')
+
                     })
                     )
 
-                    const registered =  registerUser.save();
-                    res.redirect('/')
-
+                    
                 }
             })
             
