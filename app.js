@@ -8,7 +8,7 @@ const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const mongoose = require('mongoose')
-require('./config/passport')(passport);
+// require('./config/passport')(passport);
 // require('./config/passport1')(passport)
 
 //load config 
