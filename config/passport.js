@@ -4,6 +4,16 @@ const User = require('../models/User')
 const LocalStrategy = require('passport-local').Strategy
 const bcrypt = require('bcryptjs')
 const Register = require('../models/Registers')
+
+module.exports = function(passport){
+  passport.use(
+    new LocalStrategy({
+      usernameField: 'email'
+    })
+  )
+}
+
+
 module.exports = function (passport) {
  passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
