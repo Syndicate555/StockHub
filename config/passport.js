@@ -23,7 +23,7 @@ function myfunction(passport){
             return done(null, false, {message: 'Password incorrect'})
           }
         })
-      }).catch( err => console.log(err))
+      })
 
     })
   )
