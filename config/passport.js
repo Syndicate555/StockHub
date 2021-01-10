@@ -5,7 +5,6 @@ const bcrypt = require('bcryptjs');
 const alert = require('alert')
 // Load User model
 const User = require('../models/User');
-const Register = require('../models/Registers') // for email login
 
 function myFunction1(passport) {
   passport.use(

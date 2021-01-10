@@ -1,13 +1,13 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const mongoose = require('mongoose')
-const Register = require('../models/Register')
+const User = require('../models/User')
 
 module.exports = function (passport) {
   passport.use(
     new GoogleStrategy(
       {
-        clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        clientID: '573370702268-nj2cner0rrk1a8c1dhr2bpuhcupijf9t.apps.googleusercontent.com',
+        clientSecret: 'jlp1nrN2w2iLa1chliuzJ6wg',
         callbackURL: '/auth/google/callback',
       },
       async (accessToken, refreshToken, profile, done) => {
@@ -20,12 +20,12 @@ module.exports = function (passport) {
         }
 
         try {
-          let user = await Register.findOne({ googleId: profile.id })
+          let user = await User.findOne({ googleId: profile.id })
 
           if (user) {
             done(null, user)
           } else {
-            user = await Register.create(newUser)
+            user = await User.create(newUser)
             done(null, user)
           }
         } catch (err) {
