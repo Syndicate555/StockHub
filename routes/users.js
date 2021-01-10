@@ -86,6 +86,7 @@ router.post('/register', (req, res) => {
                   'You are now registered and can log in'
                 );
                 res.redirect('/users/login');
+                alert("Registration successful")
               })
               .catch(err => console.log(err));
           });
