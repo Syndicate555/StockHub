@@ -68,8 +68,8 @@ router.post('/register', (req, res) => {
         });
       } else {
         const newUser = new User({
-          firstname,
-          lastname,
+          firstName,
+          lastName,
           email,
           password
         });
