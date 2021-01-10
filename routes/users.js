@@ -20,8 +20,8 @@ router.get('/register', forwardAuthenticated, (req, res) => res.render('register
 
 // Register
 router.post('/register', (req, res) => {
-  const firstname = req.body.firstname
-  const lastname = req.body.lastname
+  const firstName = req.body.firstname
+  const lastName = req.body.lastname
   const password = req.body.password
   const email = req.body.email
   const password2 = req.body.password2
