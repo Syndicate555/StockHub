@@ -1,60 +1,72 @@
-const express = require('express')
-const path = require('path')
-const dotenv = require('dotenv')
-const connectDB = require('./config/db') // Connecting the MongoDB database
-const morgan = require('morgan') // for log in
+const express = require('express');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const flash = require('connect-flash');
+const session = require('express-session');
 const exphbs = require('express-handlebars')
-const passport = require('passport')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
-const mongoose = require('mongoose')
-// require('./config/passport')(passport);
-// require('./config/passport1')(passport)
+const path = require('path')
+const morgan = require('morgan')
+const myFunctions = require('./config/passport')
+const app = express();
 
-//load config 
-dotenv.config({path: './config/config.env'})
- 
+// Passport Config
+myFunctions.myFunction1(passport)
+// myFunctions.myFunction2(passport)
+// DB Config
+const db = require('./config/keys').mongoURI;
 
 
-// passport config
-
-connectDB()
-const app = express()
-
-// Body parser
-app.use(express.urlencoded({extended: false}))
-app.use(express.json())
-
-if (process.env.NODE_ENV === 'development') {
- app.use(morgan('dev'))
-}
 
 // static folder
 app.use(express.static(path.join(__dirname, 'public')))
 
-//handlebars
-app.engine('.hbs', exphbs({defaultLayout: 'main',extname:'hbs'}))
-app.set('view engine', '.hbs')
+// Connect to MongoDB
+mongoose
+  .connect(
+    db,
+    { useNewUrlParser: true ,useUnifiedTopology: true}
+  )
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
+
+  //handlebars
+  app.engine('.hbs', exphbs({defaultLayout: 'main',extname:'hbs'}))
+  app.set('view engine', '.hbs')
 
 
-// sessions
+// Express body parser
+app.use(express.urlencoded({ extended: true }));
 
-app.use(session({
- secret: 'keyboard cat',
- resave: true,
- saveUninitialized: true,
- store: new MongoStore({mongooseConnection: mongoose.connection})
- 
-}))
-//passport middleware 
-app.use(passport.initialize())
-app.use(passport.session())
+// Express session
+app.use(
+  session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+  })
+);
 
-//routes
-app.use('/', require('./routes/index'))
-app.use('/auth', require('./routes/auth'))
-app.use('/stories', require('./routes/stories'))
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
+// Connect flash
+app.use(flash());
 
-const PORT = process.env.PORT || 3000
-app.listen(PORT, console.log(`Surver running in ${process.env.NODE_ENV} mode on port ${PORT}`))
+// Global variables
+app.use(function(req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
+
+// Routes
+app.use('/', require('./routes/index.js'));
+app.use('/users', require('./routes/users.js'));
+app.use('/stories', require('./routes/stories.js'));
+app.use('/auth', require('./routes/auth.js'))
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, console.log(`Server running on  ${PORT}`));
