@@ -1,10 +1,6 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const mongoose = require('mongoose')
-const User = require('../models/User') // for google login
-const bcrypt = require('bcryptjs')
-const Register = require('../models/Registers') // for email login
-
-
+const Register = require('../models/Register')
 
 module.exports = function (passport) {
   passport.use(
@@ -24,12 +20,12 @@ module.exports = function (passport) {
         }
 
         try {
-          let user = await User.findOne({ googleId: profile.id })
+          let user = await Register.findOne({ googleId: profile.id })
 
           if (user) {
             done(null, user)
           } else {
-            user = await User.create(newUser)
+            user = await Register.create(newUser)
             done(null, user)
           }
         } catch (err) {

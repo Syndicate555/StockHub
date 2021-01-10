@@ -8,7 +8,7 @@ const path = require('path')
 const morgan = require('morgan')
 const myFunctions = require('./config/passport')
 const app = express();
-
+require('./config/passport1')(passport)
 // Passport Config
 myFunctions.myFunction1(passport)
 // myFunctions.myFunction2(passport)
