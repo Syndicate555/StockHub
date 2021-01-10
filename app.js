@@ -30,6 +30,20 @@ mongoose
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
+  // Logging
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+}
+
+// Handlebars Helpers
+const {
+  formatDate,
+  stripTags,
+  truncate,
+  editIcon,
+  select,
+} = require('./helpers/hbs')
+
   //handlebars
   app.engine('.hbs', exphbs({defaultLayout: 'main',extname:'hbs'}))
   app.set('view engine', '.hbs')
