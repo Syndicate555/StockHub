@@ -50,8 +50,8 @@ const {
     exphbs({
       helpers: {
         formatDate,
-        // stripTags,
-        // truncate,
+        stripTags,
+        truncate,
         // editIcon,
         // select,
       },
