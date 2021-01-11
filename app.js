@@ -6,6 +6,8 @@ const session = require('express-session');
 const exphbs = require('express-handlebars')
 const path = require('path')
 const morgan = require('morgan')
+const methodOverride = require('method-override')
+
 const myFunctions = require('./config/passport')
 const app = express();
 const dotenv = require('dotenv')
