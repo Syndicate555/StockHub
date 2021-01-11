@@ -7,7 +7,6 @@ const exphbs = require('express-handlebars')
 const path = require('path')
 const morgan = require('morgan')
 const methodOverride = require('method-override')
-
 const myFunctions = require('./config/passport')
 const app = express();
 const dotenv = require('dotenv')
@@ -29,7 +28,7 @@ mongoose
     db,
     { useNewUrlParser: true ,useUnifiedTopology: true}
   )
-  .then(() => console.log('MongoDB Connected'))
+  .then(() => console.log(`MongoDB Connected: ${conn.connection.host}`))
   .catch(err => console.log(err));
 
   // Logging
