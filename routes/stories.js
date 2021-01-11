@@ -43,7 +43,7 @@ router.get('/', ensureAuth, async (req, res) => {
 // @desc  Show edit page
 // @route GET /stories/edit/:id
 router.get('/edit/:id', ensureAuth, (req, res) => { 
-    res.render('stories/e')
+    res.render('stories/edit')
    })
    
    
