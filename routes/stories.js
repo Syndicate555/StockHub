@@ -25,7 +25,9 @@ router.post('/', ensureAuth, async (req, res) => {
 // @route GET /stories/add
 router.get('/stories', ensureAuth, async (req, res) => { 
     try {
-        const stories = So
+        const stories = await Story.find({ status: 'public'})
+        .populate('user')
+        .sort()
         
     } catch (error) {
         console.error(error)
