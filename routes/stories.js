@@ -40,10 +40,10 @@ router.get('/', ensureAuth, async (req, res) => {
         
     }
    })
-// @desc  Show add page
-// @route GET /stories/add
-router.get('/add', ensureAuth, (req, res) => { 
-    res.render('stories/add')
+// @desc  Show edit page
+// @route GET /stories/edit/:id
+router.get('/edit/:id', ensureAuth, (req, res) => { 
+    res.render('stories/e')
    })
    
    
