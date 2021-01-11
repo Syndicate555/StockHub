@@ -50,10 +50,10 @@ const {
     exphbs({
       helpers: {
         formatDate,
-        stripTags,
-        truncate,
-        editIcon,
-        select,
+        // stripTags,
+        // truncate,
+        // editIcon,
+        // select,
       },
       defaultLayout: 'main',
       extname: '.hbs',
