@@ -52,7 +52,7 @@ const {
         formatDate,
         stripTags,
         truncate,
-        // editIcon,
+        editIcon,
         // select,
       },
       defaultLayout: 'main',
