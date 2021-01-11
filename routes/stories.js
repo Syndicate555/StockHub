@@ -22,7 +22,7 @@ router.post('/', ensureAuth, async (req, res) => {
 }
    })
 // @desc  Show all stories
-// @route GET /stories/add
+// @route GET /stories
 router.get('/stories', ensureAuth, async (req, res) => { 
     try {
         const stories = await Story.find({ status: 'public'})
