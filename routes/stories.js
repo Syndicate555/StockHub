@@ -40,6 +40,11 @@ router.get('/', ensureAuth, async (req, res) => {
         
     }
    })
+// @desc  Show add page
+// @route GET /stories/add
+router.get('/add', ensureAuth, (req, res) => { 
+    res.render('stories/add')
+   })
    
    
 
