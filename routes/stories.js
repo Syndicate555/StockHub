@@ -23,8 +23,8 @@ router.post('/', ensureAuth, async (req, res) => {
    })
 // @desc  Show all stories
 // @route GET /stories/add
-router.get('/add', ensureAuth, (req, res) => { 
-    res.render('stories/add')
+router.get('/stories', ensureAuth, (req, res) => { 
+    
    })
    
    
