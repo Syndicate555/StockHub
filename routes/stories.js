@@ -23,8 +23,9 @@ router.post('/', ensureAuth, async (req, res) => {
    })
 // @desc  Show all stories
 // @route GET /stories/add
-router.get('/stories', ensureAuth, (req, res) => { 
+router.get('/stories', ensureAuth, async (req, res) => { 
     try {
+        const stories = So
         
     } catch (error) {
         console.error(error)
