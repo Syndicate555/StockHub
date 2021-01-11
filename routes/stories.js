@@ -21,6 +21,12 @@ router.post('/', ensureAuth, async (req, res) => {
     res.render('errors/500')
 }
    })
+// @desc  Show all stories
+// @route GET /stories/add
+router.get('/add', ensureAuth, (req, res) => { 
+    res.render('stories/add')
+   })
+   
    
 
 
