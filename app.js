@@ -23,13 +23,21 @@ dotenv.config({path:'./config/config.env'})
 app.use(express.static(path.join(__dirname, 'public')))
 
 // Connect to MongoDB
-mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true ,useUnifiedTopology: true}
-  )
-  .then(() => console.log(`MongoDB Connected: ${conn.connection.host}`))
-  .catch(err => console.log(err));
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+    })
+
+    console.log(`MongoDB Connected: ${conn.connection.host}`)
+  } catch (err) {
+    console.error(err)
+    process.exit(1)
+  }
+}
+connectDB()
 
   // Logging
 if (process.env.NODE_ENV === 'development') {
