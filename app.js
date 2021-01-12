@@ -11,8 +11,12 @@ const myFunctions = require('./config/passport')
 const app = express();
 const dotenv = require('dotenv')
 require('./config/passport1')(passport)
+
+
 // Passport Config
 myFunctions.myFunction1(passport)
+
+
 // DB Config
 const db = require('./config/keys').mongoURI;
 dotenv.config({path:'./config/config.env'})
