@@ -47,7 +47,7 @@ router.get('/edit/:id', ensureAuth, async (req, res) => {
         _id: req.params._id
     }).lean()
     if (!story){
-        res.render('errors/500')
+        res.render('errors/404')
     }
    })
    
