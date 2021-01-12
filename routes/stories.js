@@ -46,7 +46,9 @@ router.get('/edit/:id', ensureAuth, async (req, res) => {
     const story = await Story.findOne({
         _id: req.params._id
     }).lean()
-    res.render('stories/edit')
+    if (!story){
+        res.render('errors/500')
+    }
    })
    
    
