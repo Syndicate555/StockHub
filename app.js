@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
 
-// Method override
+// Method override for editing stories. This changes the POST request to a PUT request
 app.use(
   methodOverride(function (req, res) {
     if (req.body && typeof req.body === 'object' && '_method' in req.body) {
