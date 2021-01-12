@@ -73,7 +73,7 @@ const {
         stripTags,
         truncate,
         editIcon,
-        // select,
+        select,
       },
       defaultLayout: 'main',
       extname: '.hbs',
