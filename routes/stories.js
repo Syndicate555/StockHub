@@ -46,8 +46,9 @@ router.get('/edit/:id', ensureAuth, async (req, res) => {
     const story = await Story.findOne({
         _id: req.params._id
     }).lean()
+    console.log(story)
     if (!story){
-        res.render('errors/404')
+        return res.render('errors/404')
     }
 
     if (story.user != req.user.id){
@@ -74,6 +75,7 @@ router.put('/:id', ensureAuth, async (req, res) => {
             new:true,
             runValidators:true
         })
+        res.redirect('/dashboard')
        
     }
    })
