@@ -70,6 +70,10 @@ router.put('/:id', ensureAuth, async (req, res) => {
     if (story.user != req.user.id){
         res.redirect('/stories')
     }else{
+        story = await Story.findOneAndUpdate({_id: req.params.id}, req.body, {
+            new:true,
+            runValidators:true
+        })
        
     }
    })
