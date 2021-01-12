@@ -67,6 +67,11 @@ router.put('/:id', ensureAuth, async (req, res) => {
     if (!story){
         return res.render('errors/404')
     }
+    if (story.user != req.user.id){
+        res.redirect('/stories')
+    }else{
+       
+    }
    })
    
    
