@@ -13,7 +13,6 @@ const dotenv = require('dotenv')
 require('./config/passport1')(passport)
 // Passport Config
 myFunctions.myFunction1(passport)
-// myFunctions.myFunction2(passport)
 // DB Config
 const db = require('./config/keys').mongoURI;
 dotenv.config({path:'./config/config.env'})
