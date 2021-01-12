@@ -61,7 +61,7 @@ router.get('/edit/:id', ensureAuth, async (req, res) => {
 
 
 // @desc  update story
-// @route PUT /stories/add
+// @route PUT /stories/:id
 router.get('/add', ensureAuth, (req, res) => { 
     res.render('stories/add')
    })
