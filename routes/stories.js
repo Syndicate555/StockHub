@@ -42,7 +42,10 @@ router.get('/', ensureAuth, async (req, res) => {
    })
 // @desc  Show edit page
 // @route GET /stories/edit/:id
-router.get('/edit/:id', ensureAuth, (req, res) => { 
+router.get('/edit/:id', ensureAuth, async (req, res) => { 
+    const story = await Story.findOne({
+        _id: req.params._id
+    }).lean()
     res.render('stories/edit')
    })
    
