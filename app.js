@@ -90,6 +90,8 @@ const {
 // Express body parser
 app.use(express.urlencoded({ extended: true }));
 
+app.use(compression()); //Compress all routes
+
 // Express session
 app.use(
   session({
