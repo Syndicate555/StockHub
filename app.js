@@ -10,6 +10,8 @@ const methodOverride = require('method-override')
 const myFunctions = require('./config/passport')
 const app = express();
 const dotenv = require('dotenv')
+var helmet = require('helmet');
+
 var compression = require('compression');
 
 require('./config/passport1')(passport)
@@ -91,6 +93,8 @@ const {
 app.use(express.urlencoded({ extended: true }));
 
 app.use(compression()); //Compress all routes
+app.use(helmet());
+
 
 // Express session
 app.use(
