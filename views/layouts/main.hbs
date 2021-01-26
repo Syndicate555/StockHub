@@ -1,81 +1,41 @@
-{{!-- main homepage --}}
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
-    integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
-  <meta http-equiv="Content-Security-Policy" content="default-src *;
-       img-src * 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *;
-       style-src  'self' 'unsafe-inline' *">
-  <link rel="stylesheet" href="/css/style.css">
-  <title>StockHub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+        integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/style.css">
+    <title>StoryBooks</title>
 </head>
 
 <body>
-  {{> _header}}
-  {{> _add_btn}}
-  <div class="container">
-    {{{body}}}
+    {{> _header}}
+    {{> _add_btn}}
+    <div class="container">
+        {{{body}}}
+    </div>
 
-  </div>
-  <script>
-    window.fbAsyncInit = function () {
-      FB.init({
-        appId: '180050977162940',
-        autoLogAppEvents: true,
-        xfbml: true,
-        version: 'v9.0'
-      });
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.14.1/ckeditor.js"
+        integrity="sha256-bEIQpI72w9NJuIVhTLFUF2/8uxl0u5800r8ddViuv+o=" crossorigin="anonymous"></script>
 
-      FB.getLoginStatus(function (response) {
-        statusChangeCallback(response);
-      });
+    <script>
+        M.Sidenav.init(document.querySelector('.sidenav'))
+        M.FormSelect.init(document.querySelector('#status'))
+        CKEDITOR.plugins.addExternal('timestamp', 'https://ckeditor.com/docs/ckeditor4/4.15.1/examples/assets/plugins/timestamp/', 'plugin.js');
 
-    };
-    (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[ 0 ]
-      if (d.getElementsById(id)) { return; }
-      js = d.createElement(s); js.id = id;
-      js.src = '//connect.facebook.net/en_US/sdk.js';
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-    function statusChangeCallback(response) {
-      if (response.status === 'connected') {
-        console.log('Logged in and authenticated');
-      } else {
-        console.log('Not authenticated')
-      }
-    }
+        CKEDITOR.replace('body', {
+            extraPlugins: 'timestamp'
+        });
 
 
-  </script>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.14.1/ckeditor.js"
-    integrity="sha256-bEIQpI72w9NJuIVhTLFUF2/8uxl0u5800r8ddViuv+o=" crossorigin="anonymous"></script>
-  <script>
-    M.Sidenav.init(document.querySelector('.sidenav'))
-    M.FormSelect.init(document.querySelector('#status'))
-    CKEDITOR.plugins.addExternal('timestamp', 'https://ckeditor.com/docs/ckeditor4/4.15.1/examples/assets/plugins/timestamp/', 'plugin.js');
-
-    CKEDITOR.replace('body', {
-      extraPlugins: 'timestamp'
-    });
-
-
-    CKEDITOR.replace('body', {
-      plugins: 'wysiwygarea, toolbar, basicstyles, link, image, table,',
-    })
-  </script>
+        CKEDITOR.replace('body', {
+            plugins: 'wysiwygarea, toolbar, basicstyles, link, image, table,',
+        })
+    </script>
 </body>
 
 </html>

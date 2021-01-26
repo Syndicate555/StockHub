@@ -1,5 +1,3 @@
-// Handlebar Helper functions for data formating and structuring
-
 const moment = require('moment')
 
 module.exports = {

@@ -54,18 +54,20 @@ router.post('/register', (req, res) => {
       password,
       password2
     });
-  } else {
-    User.findOne({ email: email }).then(user => {
-      if (user) {
-        errors.push({ msg: 'Email already exists' });
-        res.render('register', {
-          errors,
-          firstname,
-          lastname,
-          email,
-          password,
-          password2
-        });
+  }
+  else {
+   User.findOne({ email: email }).then(user => {
+    if (user) {
+     // errors.push({ msg: 'Email already exists' });
+      alert("Email already exists")
+        // res.render('register', {
+        //   errors,
+        //   firstname,
+        //   lastname,
+        //   email,
+        //   password,
+        //   password2
+        // });
       } else {
         const newUser = new User({
           firstName,
@@ -81,10 +83,7 @@ router.post('/register', (req, res) => {
             newUser
               .save()
               .then(user => {
-                req.flash(
-                  'success_msg',
-                  'You are now registered and can log in'
-                );
+               
                 res.redirect('/users/login');
                 alert("Registration successful")
               })
@@ -101,14 +100,14 @@ router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/dashboard',
     failureRedirect: '/users/login',
-    failureFlash: true
+    
   })(req, res, next);
 });
 
 // Logout
 router.get('/logout', (req, res) => {
   req.logout();
-  req.flash('success_msg', 'You are logged out');
+  // req.flash('success_msg', 'You are logged out');
   res.redirect('/users/login');
 });
 

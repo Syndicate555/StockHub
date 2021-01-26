@@ -1,57 +1,32 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const passport = require('passport');
-const flash = require('connect-flash');
-const session = require('express-session');
-const exphbs = require('express-handlebars')
 const path = require('path')
-const morgan = require('morgan')
-const methodOverride = require('method-override')
-const myFunctions = require('./config/passport')
-const app = express();
+const express = require('express')
+const mongoose = require('mongoose')
 const dotenv = require('dotenv')
-var helmet = require('helmet');
+const morgan = require('morgan')
+const exphbs = require('express-handlebars')
+const methodOverride = require('method-override')
+const passport = require('passport')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
+const connectDB = require('./config/db')
+const myFunctions = require('./config/passport1')
 
-var compression = require('compression');
+// Load config
+dotenv.config({ path: './config/config.env' })
 
-require('./config/passport1')(passport)
-
-
-// Passport Config
+// Passport config
+require('./config/passport')(passport)
 myFunctions.myFunction1(passport)
 
-
-// DB Config
-const db = require('./config/keys').mongoURI;
-dotenv.config({path:'./config/config.env'})
-
-
-// static folder
-app.use(express.static(path.join(__dirname, 'public')))
-
-// Connect to MongoDB
-const connectDB = async () => {
-  try {
-    const connection = await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-    })
-
-    console.log(`MongoDB Connected: ${connection.connection.host}`)
-  } catch (err) {
-    console.error(err)
-    process.exit(1)
-  }
-}
 connectDB()
 
-  // Logging
-if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'))
-}
+const app = express()
 
-// Method override for editing stories. This changes the POST request to a PUT request
+// Body parser
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
+
+// Method override
 app.use(
   methodOverride(function (req, res) {
     if (req.body && typeof req.body === 'object' && '_method' in req.body) {
@@ -62,6 +37,12 @@ app.use(
     }
   })
 )
+
+// Logging
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+}
+
 // Handlebars Helpers
 const {
   formatDate,
@@ -71,39 +52,36 @@ const {
   select,
 } = require('./helpers/hbs')
 
-  //handlebars
-  app.engine(
-    '.hbs',
-    exphbs({
-      helpers: {
-        formatDate,
-        stripTags,
-        truncate,
-        editIcon,
-        select,
-      },
-      defaultLayout: 'main',
-      extname: '.hbs',
-    })
-  )
-  app.set('view engine', '.hbs')
+// Handlebars
+app.engine(
+  '.hbs',
+  exphbs({
+    helpers: {
+      formatDate,
+      stripTags,
+      truncate,
+      editIcon,
+      select,
+    },
+    defaultLayout: 'main',
+    extname: '.hbs',
+  })
+)
+app.set('view engine', '.hbs')
 
-
-// Express body parser
-app.use(express.urlencoded({ extended: true }));
-
-app.use(compression()); //Compress all routes
-app.use(helmet());
-
-
-// Express session
+// Sessions
 app.use(
   session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
-);
+)
+
+// Passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
 
 // Set global var
 app.use(function (req, res, next) {
@@ -111,28 +89,16 @@ app.use(function (req, res, next) {
   next()
 })
 
-// Passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
-
-// Connect flash
-app.use(flash());
-
-// Global variables
-app.use(function(req, res, next) {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
-  next();
-});
+// Static folder
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Routes
-app.use('/', require('./routes/index.js'));
+app.use('/', require('./routes/index'))
+app.use('/auth', require('./routes/auth'))
+app.use('/stories', require('./routes/stories'))
 app.use('/users', require('./routes/users.js'));
-app.use('/stories', require('./routes/stories.js'));
-app.use('/auth', require('./routes/auth.js'))
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 
 app.listen(
   PORT,
