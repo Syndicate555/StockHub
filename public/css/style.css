@@ -8,6 +8,18 @@ p {
   margin-top: 50px;
   text-align: center;
 }
+.avatar {
+  vertical-align: middle;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  text-align: center;
+  padding-left: 20px;
+}
+#navhead {
+  color: black;
+  text-align: center;
+}
 
 .fa-small {
   font-size: 16px !important;
@@ -16,6 +28,21 @@ p {
 .btn-float {
   float: left;
   margin-right: 10px;
+}
+
+.btn {
+  border-radius: 15px;
+}
+
+.card {
+  border-radius: 30px;
+  border-style: solid;
+  border-color: cornflowerblue;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translate(-1.5rem) scale(1.1);
 }
 
 .img-small {
@@ -63,4 +90,75 @@ h3 {
 img {
   height: 200px;
   width: 320px;
+}
+#nav:hover {
+  transform: translate(+1.5rem) scale(1.1);
+  background-color: rgba(179, 238, 240, 0.664);
+}
+#nav {
+  transition: 0.3s;
+  text-align: center;
+  padding-right: 20px;
+}
+.sidenav {
+  border-radius: 25px;
+}
+#header {
+  box-shadow: cornflowerblue;
+  box-sizing: border-box;
+}
+#add {
+  transition: 0.3s;
+}
+#add:hover {
+  transform: translate(1.5rem) scale(1.1);
+}
+.sidenav-trigger {
+  transition: 0.3s;
+}
+.sidenav-trigger:hover {
+  transform: scale(2);
+}
+#zoom {
+  transition: 0.3s;
+}
+#zoom:hover {
+  transform: translate(-3.5rem) scale(1.5);
+}
+#zoom1 {
+  text-align: right;
+}
+
+@media only screen and (max-width: 600px) {
+  #logout {
+    padding-top: 18px;
+  }
+  #zoom:hover {
+    transform: none;
+  }
+
+  .footer {
+    text-align: center;
+  }
+  .btn {
+    padding-bottom: 20px;
+  }
+  .table {
+    height: 120px;
+  }
+  .fass {
+    height: 20px;
+    width: 20px;
+  }
+  .footer {
+    padding-right: 50px;
+    padding-top: 100px;
+  }
+  #login {
+    background-image: none;
+    padding-top: 70px;
+  }
+  .card:hover {
+    transform: none;
+  }
 }

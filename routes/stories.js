@@ -8,7 +8,9 @@ const Story = require('../models/Story')
 // @desc    Show add page
 // @route   GET /stories/add
 router.get('/add', ensureAuth, (req, res) => {
-  res.render('stories/add')
+  res.render('stories/add', {
+    name1: req.user.firstName + ' ' + req.user.lastName,
+  })
 })
 
 // @desc    Process add form
@@ -35,6 +37,7 @@ router.get('/', ensureAuth, async (req, res) => {
       .lean()
 
     res.render('stories/index', {
+      name1: req.user.firstName + ' ' + req.user.lastName,
       stories,
     })
   } catch (err) {
@@ -57,6 +60,7 @@ router.get('/:id', ensureAuth, async (req, res) => {
       res.render('error/404')
     } else {
       res.render('stories/show', {
+        name1: req.user.firstName + ' ' + req.user.lastName,
         story,
       })
     }
@@ -82,6 +86,7 @@ router.get('/edit/:id', ensureAuth, async (req, res) => {
       res.redirect('/stories')
     } else {
       res.render('stories/edit', {
+        name1: req.user.firstName + ' ' + req.user.lastName,
         story,
       })
     }
@@ -151,6 +156,7 @@ router.get('/user/:userId', ensureAuth, async (req, res) => {
       .lean()
 
     res.render('stories/index', {
+      name1: req.user.firstName + ' ' + req.user.lastName,
       stories,
     })
   } catch (err) {

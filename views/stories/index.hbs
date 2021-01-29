@@ -1,4 +1,5 @@
-<h3>All Public Stock Stories</h3>
+<h3><span id="type" style="font-family:'Courier New', Courier, monospace; font-weight:bold">All Public Stock
+        Stories</span></h3>
 <br>
 <div class="row">
     {{#each stories}}
@@ -12,19 +13,15 @@
                 <br>
                 <div class="chip">
                     {{!-- <img src="{{user.image}}" alt=""> --}}
-                    <a href="/stories/user/{{user._id}}">By {{user.firstName}}</a>
+                    <a href="/stories/user/{{user._id}}">By {{user.firstName}} {{user.lastName}}</a>
                 </div>
             </div>
             <div class="card-action center-align">
-                <a href="/stories/{{_id}}" class="btn grey">Read More</a>
+                <a href="/stories/{{_id}}" class="btn red">View Post</a>
             </div>
         </div>
     </div>
-    <footer class="footer">
-        <p>Site by
-            <a href="https://saffataziz.site" target="_blank"> Saffat Aziz</a>
-        </p>
-    </footer>
+
     {{else}}
     <p>No stories to display</p>
 
