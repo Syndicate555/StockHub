@@ -53,6 +53,7 @@ const {
   editIcon,
   select,
 } = require('./helpers/hbs')
+const { isObject } = require('util')
 
 // Handlebars
 app.engine(
@@ -93,6 +94,11 @@ app.use(function (req, res, next) {
 
 // Static folder
 app.use(express.static(path.join(__dirname, 'public')))
+
+// Executed when a client connects
+io.on('connection', socket => {
+  console.log('New Websocket connection')
+})
 
 // Routes
 app.use('/', require('./routes/index'))
