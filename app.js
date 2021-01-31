@@ -106,7 +106,7 @@ app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
 app.use('/stories', require('./routes/stories'))
 app.use('/users', require('./routes/users.js'));
-// app.use('/chat ', require('./routes/chat.js'))
+app.use('/chat ', require('./routes/chat.js'))
 const PORT = process.env.PORT || 3000
 
 server.listen(

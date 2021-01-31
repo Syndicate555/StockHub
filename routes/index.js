@@ -12,6 +12,12 @@ router.get('/', ensureGuest, (req, res) => {
   })
 })
 
+// router.get('/chatrooms', ensureGuest, (req, res) => {
+//   res.render('chat', {
+//     layout: 'login',
+//   })
+// })
+
 // @desc    Dashboard
 // @route   GET /dashboard
 router.get('/dashboard', ensureAuth, async (req, res) => {
@@ -27,6 +33,7 @@ router.get('/dashboard', ensureAuth, async (req, res) => {
     res.render('error/500')
   }
 })
+
 
 
 
