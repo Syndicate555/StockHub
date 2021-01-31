@@ -15,6 +15,8 @@ const myFunctions = require('./config/passport1')
 // Load config
 dotenv.config({ path: './config/config.env' })
 
+
+
 // Passport config
 require('./config/passport')(passport)
 myFunctions.myFunction1(passport)
@@ -53,6 +55,7 @@ const {
   truncate,
   editIcon,
   select,
+  elect
 } = require('./helpers/hbs')
 const { isObject } = require('util')
 
@@ -62,6 +65,7 @@ app.engine(
   exphbs({
     helpers: {
       formatDate,
+      elect,
       stripTags,
       truncate,
       editIcon,

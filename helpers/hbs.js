@@ -17,6 +17,23 @@ module.exports = {
   stripTags: function (input) {
     return input.replace(/<(?:.|\n)*?>/gm, '')
   },
+  // select: function (selected, options) {
+  //   return options.fn(this).replace(
+  //     new RegExp(' value=\"' + selected + '\"'),
+  //     '$& selected="selected"');
+    
+  // },
+  elect: function (value, options) {
+    return options.fn(this)
+    .split('\n')
+    .map(function(v) {
+      var t = 'value="' + value + '"'
+      return ! RegExp(t).test(v) ? v : v.replace(t, t + ' selected="selected"')
+    })
+    .join('\n')
+   
+  },
+  
   editIcon: function (storyUser, loggedUser, storyId, floating = true) {
     if (storyUser._id.toString() == loggedUser._id.toString()) {
       if (floating) {
