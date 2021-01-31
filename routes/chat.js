@@ -7,7 +7,6 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 
 router.get('/chatrooms', ensureAuth, (req, res) =>res.render('chat', {
-  layout:'login'
 }));
 
 module.exports = router
