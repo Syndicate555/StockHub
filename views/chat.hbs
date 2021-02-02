@@ -27,8 +27,10 @@
     </div>
     <div class="form-control">
      <label for="room">Room</label>
-     <select name="status" id="Status" class="binf-selectpicker" data-style="binf-btn-warning">
-      {{#select status}}
+     <input type="text" name="room" id="room" placeholder="Enter roomname" required />
+
+     {{!-- <select>
+      {{#select "Bar"}}
       <option value="JavaScript">JavaScript</option>
       <option value="Python">Python</option>
       <option value="PHP">PHP</option>
@@ -36,7 +38,16 @@
       <option value="Ruby">Ruby</option>
       <option value="Java">Java</option>
       {{/select}}
-     </select>
+     </select> --}}
+     {{!-- <div class="form-group col-6">
+      <label for="booking_type">Booking Type</label>
+      <select name="booking_type" id="booking_type" class="form-control" multiple>
+       <option value="one_way_transfer" {{{multiselect ptb.booking_type "one_way_transfer" }}}>One Way Transfer</option>
+       <option value="two_way_transfer" {{{multiselect ptb.booking_type "two_way_transfer" }}}>Two Way Transfer</option>
+       <option value="nightclub_tour" {{{multiselect ptb.booking_type "nightclub_tour" }}}>Nightclub Tour</option>
+       <option value="kids_bus_party" {{{multiselect ptb.booking_type "kids_bus_party" }}}>Kids Bus Party</option>
+      </select>
+     </div> --}}
 
     </div>
     <button type="submit" class="btn">Join Chat</button>

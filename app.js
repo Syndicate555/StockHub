@@ -55,6 +55,7 @@ const {
   truncate,
   editIcon,
   select,
+  multiselect,
   elect
 } = require('./helpers/hbs')
 const { isObject } = require('util')
@@ -68,6 +69,7 @@ app.engine(
       elect,
       stripTags,
       truncate,
+      multiselect,
       editIcon,
       select,
     },

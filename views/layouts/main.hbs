@@ -37,12 +37,15 @@
         })
     </script>
     <script>
-        Handlebars.registerHelper('select',
-            function (selected, options) {
-                Handlebars.registerHelper('select', function (selected, options) {
-                    return options.fn(this).replace(new RegExp(' value=\"' + selected + '\"'),
-                        '$& selected="selected"');
-                });
+        Handlebars.registerHelper("select", function (value, options) {
+            return options.fn(this)
+                .split('\n')
+                .map(function (v) {
+                    var t = 'value="' + value + '"'
+                    return !RegExp(t).test(v) ? v : v.replace(t, t + ' selected="selected"')
+                })
+                .join('\n')
+        }
     </script>
     <script src="/socket.io/socket.io.js"></script>
     {{!--
