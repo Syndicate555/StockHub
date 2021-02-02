@@ -13,7 +13,6 @@ router.get('/chatrooms', ensureAuth, (req, res) =>
 
  router.get('/chatrooms/chat', ensureAuth, (req, res) =>
   res.render('chatrooms', {
-  layout: 'chatIn',
   name1: req.user.firstName + ' ' + req.user.lastName,
 }));
 
