@@ -11,6 +11,11 @@ router.get('/chatrooms', ensureAuth, (req, res) =>
   name1: req.user.firstName + ' ' + req.user.lastName,
  }));
 
+ router.get('/', ensureAuth, (req, res) =>
+ res.render('chart', {
+  layout: 'chart',
+ }));
+
  router.get('/chatrooms/chat', ensureAuth, (req, res) =>
   res.render('chatrooms', {
   name1: req.user.firstName + ' ' + req.user.lastName,
