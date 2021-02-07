@@ -1,7 +1,7 @@
 const path = require('path')
 const express = require('express')
 const http = require('http')
-const socketio = require('socket.io')
+// const socketio = require('socket.io')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
@@ -25,7 +25,7 @@ connectDB()
 
 const app = express()
 const server = http.createServer(app)
-const io = socketio(server)
+// const io = socketio(server)
 
 // Body parser
 app.use(express.urlencoded({ extended: false }))
@@ -103,9 +103,9 @@ app.use(function (req, res, next) {
 app.use(express.static(path.join(__dirname, 'public')))
 
 // Executed when a client connects
-io.on('connection', socket => {
-  console.log('New Websocket connection')
-})
+// io.on('connection', socket => {
+//   console.log('New Websocket connection')
+// })
 
 // Routes
 app.use('/', require('./routes/index'))
