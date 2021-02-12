@@ -15,4 +15,4 @@ $ npm run dev
 
 ### MongoDB
 
-Open "config/keys.js" and add your MongoDB URI, local or Atlas
+Open "config/keys.js" and add your own MongoDB URI to connect a database to the app before running it locally.
