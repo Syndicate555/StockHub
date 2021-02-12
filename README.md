@@ -1,4 +1,4 @@
-## Deployed App : http://stockhub-deployed.herokuapp.com/
+## Deployed App : http://stockhub-deployed.herokuapp.com/ or http://www.stockhub.online/
 ### Usage
 
 ```sh
